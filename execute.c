@@ -21,6 +21,7 @@ int execute(stack_t **stack, unsigned int line_number, char *content,
 		{"push", stack_push},
 		{"pall", struct_pall},
 		{"pint", pint_top},
+		{"pop", pop_top},
 		{NULL, NULL}
 	};
 
