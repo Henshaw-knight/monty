@@ -1,6 +1,11 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -17,6 +22,7 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
+extern char *monty_arg;
 
 /**
  * struct instruction_s - opcode and its function
