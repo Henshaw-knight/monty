@@ -62,5 +62,6 @@ int execute(stack_t **stack, unsigned int line_number, char *content,
 void stack_push(stack_t **stack, unsigned int line_number);
 void free_struct(stack_t *head);
 void struct_pall(stack_t **top, unsigned int line_number);
+void pint_top(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */
