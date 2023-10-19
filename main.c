@@ -1,5 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+char *monty_arg = NULL;
+
+/**
+ * main - Entry point, interpreter for Monty bytecodes files
+ *
+ * @argc: argument count
+ * @argv: argument vector, monty file location
+ *
+ * Return: 0 (on Success)
+ */
 
 int main(int argc, char *argv[])
 {
@@ -7,6 +17,7 @@ int main(int argc, char *argv[])
 	size_t len = 0;
 	ssize_t read;
 	FILE *file;
+	size_t line_number = 0;
 
 	if (argc != 2)
 	{
@@ -24,6 +35,7 @@ int main(int argc, char *argv[])
 
 	while ((read = getline(&line, &len, file)) != -1)
 	{
+		line_number++;
 		/* execute code */
 	}
 
