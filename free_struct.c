@@ -11,8 +11,7 @@ void free_struct(stack_t *head)
 {
 	stack_t *temp;
 
-	if (head == NULL)
-		return;
+	temp = head;
 
 	while (head)
 	{

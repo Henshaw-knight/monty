@@ -15,11 +15,10 @@ int main(int argc, char *argv[])
 {
 	char *line = NULL;
 	size_t len = 0;
-	ssize_t read;
+	ssize_t read = 1;
 	FILE *file;
-	size_t line_number = 0;
+	unsigned int line_number = 0;
 	stack_t *stack = NULL;
-	int exit_status = 0;
 
 	if (argc != 2)
 	{
@@ -36,18 +35,18 @@ int main(int argc, char *argv[])
 	}
 	instance_vars.file = file;
 
-	while ((read = getline(&line, &len, file)) != -1)
+	while (read > 0)
 	{
+		read = getline(&line, &len, file);
 		instance_vars.line = line;
 		line_number++;
-		exit_status = execute(&stack, line_number, line);
-		if (exit_status == EXIT_FAILURE)
-			break;
+		if (read != -1)
+			execute(&stack, line_number, line, file);
 	}
 
 	free(line);
 	free_struct(stack);
 	fclose(file);
 
-	return (exit_status);
+	return (0);
 }

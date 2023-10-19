@@ -10,8 +10,9 @@
  */
 void stack_push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *top = malloc(sizeof(stack_t));
+	stack_t *top;
 	int n, i = 0;
+	int flag = 0;
 
 	if (instance_vars.monty_arg != NULL)
 	{
@@ -20,20 +21,20 @@ void stack_push(stack_t **stack, unsigned int line_number)
 		while (instance_vars.monty_arg[i] != '\0')
 		{
 			if (instance_vars.monty_arg[i] < '0' || instance_vars.monty_arg[i] > '9')
-			{
-				free(instance_vars.line);
-				free_struct(*stack);
-				fclose(instance_vars.file);
-				fprintf(stderr, "L%d: usage: push integer\n", line_number);
-				exit(EXIT_FAILURE);
-			}
+				flag = 1;
 			i++;
+		}
+		if (flag == 1)
+		{
+			free(instance_vars.monty_arg), free_struct(*stack);
+			fclose(instance_vars.file);
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
-		free(instance_vars.line);
-		free_struct(*stack);
+		free(instance_vars.monty_arg), free_struct(*stack);
 		fclose(instance_vars.file);
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
@@ -47,7 +48,6 @@ void stack_push(stack_t **stack, unsigned int line_number)
 	n = atoi(instance_vars.monty_arg);
 	if ((*stack) != NULL)
 		(*stack)->prev = top;
-	top->n = n;
-	top->next = *stack, top->prev = NULL;
+	top->n = n, top->next = *stack, top->prev = NULL;
 	*stack = top;
 }
