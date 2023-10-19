@@ -20,6 +20,7 @@ int execute(stack_t **stack, unsigned int line_number, char *content,
 	instruction_t op_list[] = {
 		{"push", stack_push},
 		{"pall", struct_pall},
+		{"pint", pint_top},
 		{NULL, NULL}
 	};
 
