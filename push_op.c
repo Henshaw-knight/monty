@@ -26,17 +26,17 @@ void stack_push(stack_t **stack, unsigned int line_number)
 		}
 		if (flag == 1)
 		{
-			free(instance_vars.monty_arg), free_struct(*stack);
-			fclose(instance_vars.file);
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			fclose(instance_vars.file);
+			free_struct(*stack), free(instance_vars.line);
 			exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
-		free(instance_vars.monty_arg), free_struct(*stack);
-		fclose(instance_vars.file);
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		fclose(instance_vars.file);
+		free_struct(*stack), free(instance_vars.line);
 		exit(EXIT_FAILURE);
 	}
 	top = malloc(sizeof(stack_t));
