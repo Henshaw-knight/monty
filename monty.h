@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/stat.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -22,7 +23,6 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
-extern char *monty_arg;
 
 /**
  * struct instruction_s - opcode and its function
@@ -37,5 +37,29 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+
+/**
+ * struct monty_instance - variables needed across multiple file
+ *
+ * @file: pointer to the monty file
+ * @monty_arg: opcode argument
+ * @line: the content of the line
+ *
+ * Description: holds values needed in multiple files of the program
+ */
+typedef struct monty_instance
+{
+	FILE *file;
+	char *monty_arg;
+	char *line;
+} monty_inst;
+
+extern monty_inst instance_vars;
+
+int execute(stack_t **stack, unsigned int line_number, char *content);
+void stack_push(stack_t **stack, unsigned int line_number);
+void free_struct(stack_t *head);
+void struct_pall(stack_t **top, unsigned int line_number);
 
 #endif /* MONTY_H */
