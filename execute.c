@@ -23,6 +23,7 @@ int execute(stack_t **stack, unsigned int line_number, char *content,
 		{"pint", pint_top},
 		{"pop", pop_top},
 		{"swap", swap_elem},
+		{"add", add_elem},
 		{NULL, NULL}
 	};
 
