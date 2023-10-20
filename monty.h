@@ -68,5 +68,6 @@ void swap_elem(stack_t **stack, unsigned int line_number);
 void add_elem(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void sub_elem(stack_t **stack, unsigned int line_number);
+void div_elem(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */
