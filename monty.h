@@ -65,5 +65,6 @@ void struct_pall(stack_t **top, unsigned int line_number);
 void pint_top(stack_t **stack, unsigned int line_number);
 void pop_top(stack_t **stack, unsigned int line_number);
 void swap_elem(stack_t **stack, unsigned int line_number);
+void add_elem(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */
