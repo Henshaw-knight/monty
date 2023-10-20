@@ -24,6 +24,7 @@ int execute(stack_t **stack, unsigned int line_number, char *content,
 		{"pop", pop_top},
 		{"swap", swap_elem},
 		{"add", add_elem},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 
